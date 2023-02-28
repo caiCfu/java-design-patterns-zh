@@ -50,6 +50,7 @@ public class Main {
       SecureRandom random = new SecureRandom();
       Thread.sleep(random.nextInt(1000));
       for (int i = 0; i < 1000000; i++) {
+        // 模拟多线程下转账是否线程安全
         bank.transfer(random.nextInt(4), random.nextInt(4), random.nextInt());
       }
     } catch (InterruptedException e) {
@@ -70,5 +71,6 @@ public class Main {
     for (int i = 0; i < 5; i++) {
       executorService.execute(runnable);
     }
+    executorService.shutdown();
   }
 }
